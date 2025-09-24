@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1",
+    "name": "J.K.Rowling",
+    "nationality": "British"
+  },
+  {
+    "id": "2",
+    "name": "Brian Weiss",
+    "nationality": "American"
+  },
+  {
+    "id": "3",
+    "name": "Maria Elena Walsh",
+    "nationality": "Argentine"
+  },
+  {
+    "id": "fb29f942-288e-4bd7-bcb6-57b36c96a26a",
+    "name": "J.R.R. Tolkien"
+  }
+]
