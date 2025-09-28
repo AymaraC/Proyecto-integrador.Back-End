@@ -12,40 +12,32 @@ const PublisherModel = {
 
     getPublishers : () => {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
-        const fileJson = JSON.parse(readFile);
-        if(fileJson.length === 0){
-            return `No hay editoriales disponibles.`
-        } else {
-            return fileJson.map(e => `Nombre: ${e.name}`);
-        };
+        return JSON.parse(readFile);
     },
 
     addPublisher : (name) => {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
         const fileJson = JSON.parse(readFile);
+        
         let exists = fileJson.find(p => p.name === name);
         if(exists){
-            return `La editorial ${name} ya existe en nuestra base de datos.`
-        } else {
-            const newPublisher = {
-                id:uuidv4(),
-                name
-            };
-            fileJson.push(newPublisher);
-            fs.writeFileSync(publisherPath, JSON.stringify(fileJson, null, 2));
-            return `✅ La editorial ${name} fue guardada con éxito.`
-        };
+            return null;      //Como ya existe devuelve null
+        }
+        const newPublisher = {
+            id: uuidv4(),
+            name
+        }
+        fileJson.push(newPublisher);
+        fs.writeFileSync(publisherPath, JSON.stringify(fileJson, null, 2));
+        return newPublisher;
     },
 
     findPublisher : (name) => {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
         const fileJson = JSON.parse(readFile);
+
         const findPublisher = fileJson.find(p => p.name === name);
-        if(!findPublisher){
-            return `No se encontró ninguna editorial con ese nombre.`
-        } else {
-            return `La editorial ${findPublisher.name} se encuentra en nuestra biblioteca.`
-        };
+        return findPublisher || null;
     }
 };
 

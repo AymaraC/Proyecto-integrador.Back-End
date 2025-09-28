@@ -1,6 +1,6 @@
-const LibraryView = {
-    formatResponse : (data) => {
-        if(!data){
+const LibraryView = {                   //La vista recibe los datos crudos del modelo por medio del controlador y los convierte en un formato que se le pueda enviar al cliente.
+    formatResponse : (data) => {        //Por medio del parametro data es que recibe la información del comando que haya elegido el cliente.
+        if(!data){                      //Manejamos los errores por si es un comando no reconocido o null.
             return JSON.stringify({
                 status: "error",
                 message: "❌ No se pudo realizar la operación."
@@ -8,7 +8,7 @@ const LibraryView = {
         }
             return JSON.stringify({
             status: "success",
-            [type]: data
+            data
 
         }, null, 2);
     }
