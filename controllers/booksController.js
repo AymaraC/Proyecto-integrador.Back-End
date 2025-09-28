@@ -7,8 +7,8 @@ const BookController = {
         if(books.length === 0){
             return LibraryView.formatResponse('No hay libros en nuestra biblioteca');
         } else {
-            const list = books.map(b => `${b.title} - ${b.authorName} - ${b.publisherName} - ${b.year}`).join('\n');
-            return LibraryView.formatResponse(`Listado de libros disponibles:\n${list}`);
+            const list = books.map(b => `${b.title} - ${b.authorName} - ${b.publisherName} - ${b.year}`)//.join('\n');
+            return LibraryView.formatResponse(`Listado de libros disponibles: ${list}`);
         };        
 
     },
@@ -24,7 +24,7 @@ const BookController = {
         if(!book){
             return LibraryView.formatResponse(`El libro '${title}' no se encuentra en nuestra biblioteca.`)
         } else {
-            return LibraryView.formatResponse(`Título: ${book.title}\n Autor: ${book.authorName}\nEditorial: ${book.publisherName}\nAño: ${book.year} 📚`);
+            return LibraryView.formatResponse(`Título: ${book.title} Autor: ${book.authorName} Editorial: ${book.publisherName} Año: ${book.year} 📚`);
         };
     },
 

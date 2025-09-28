@@ -3,21 +3,21 @@
     "id": "18",
     "title": "Harry Potter y el prisionero de Azkaban",
     "authorId": "1",
-    "editorialId": "29",
+    "publisherId": "29",
     "year": "1999"
   },
   {
     "id": "15",
     "title": "Harry Potter y el caliz del fuego",
     "authorId": "1",
-    "editorialId": "29",
+    "publisherId": "29",
     "year": "2000"
   },
   {
     "id": "26",
     "title": "El reino del revés",
     "authorId": "3",
-    "editorialId": "30",
+    "publisherId": "30",
     "year": "1963"
   }
 ]
