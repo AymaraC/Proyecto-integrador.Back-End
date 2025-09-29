@@ -29,11 +29,26 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
             if(isJSON(bookDataString)){                                     //Verificamos si el comando es formato JSON cuando hay 2 o más campos.
                 const bookData = JSON.parse(bookDataString);                //Si lo es, convertimos los datos a un objeto JSON 
-                socket.write(BookController.addBook(bookData.title, bookData.author, bookData.publisher, bookData.year) + '\n');
-            
+                
+                if(!bookData.title || !bookData.author || !bookData.publisher){     //Validamos que no esten vacíos los campos de título, autor y editorial.
+                    socket.write('❌ ERROR: El título, autor y editorial son obligatorios.\n')
+                } else if(isNaN(Number(bookData.year))){                            //Validamos que el número ingresado sea válido.
+                    socket.write('ERROR: El año debe ser un número válido.\n');
+                } else {                                                            //Si pasa las validaciones agregamos el libro a nuestra biblioteca.
+                    const response = BookController.addBook(
+                        bookData.title,
+                        bookData.author,
+                        bookData.publisher,
+                        bookData.year
+                    );
+                    socket.write(response + 'n');
+                } 
+                
             } else {
+
                 socket.write('❌ ERROR: formato de JSON no válido.\n')
             }
+
         } else if(command.startsWith('find book')){
             const title = command.replace('find book', '').trim();
             socket.write(BookController.findBook(title) + '\n');
@@ -42,30 +57,46 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             const title = command.replace('delete book', '').trim();
             socket.write(BookController.deleteBook(title) + '\n');
         }
+
             //----------------HASTA ACÁ LOS COMANDOS PARA "LIBROS".----------------//
+
         else if(command === 'get publishers'){
             const response = PublisherController.getPublishers();
             socket.write(response + '\n');
 
         } else if(command === 'add publisher'){
             const publisher = command.replace('add publisher', '').trim();
-            socket.write(PublisherController.addPublisher(publisher) + '\n')
 
+            if(!publisherName){
+                socket.write('❌ ERROR: El nombre de la editorial es obligatorio.\n');
+            } else {
+                const response = PublisherController.addPublisher(publisher);
+                socket.write(response + '\n');
+            }
         } else if(command === 'find publisher'){
             const publisher = command.replace('find publisher', '').trim();
             socket.write(PublisherController.findPublisher(publisher) + '\n');
         }
+
             //----------------HASTA ACÁ LOS COMANDOS PARA "EDITORIALES".----------------//
+
           else if(command === 'get authors'){
             const authors = AuthorController.getAuthors();
             socket.write(authors + '\n');
 
         } else if(command === 'add author'){
             const response = command.replace('add author', '').trim();
+
             if(isJSON(response)){                                     
-                const authorData = JSON.parse(response);                
-                socket.write(AuthorController.addAuthor(authorData.name, authorData.nationality) + '\n');
-            
+                const authorData = JSON.parse(response);       
+                         
+                if(!authorData.name || !authorData.nationality){
+                    socket.write('❌ ERROR: El nombre y la nacionalidad del autor son obligatorios.\n')
+                } else {
+                    const response = AuthorController.addAuthor(authorData.name, authorData.nationality);
+                    socket.write(response + '\n');
+                }
+
             } else {
                 socket.write('❌ ERROR: formato de JSON no válido.\n')
             }
@@ -82,6 +113,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             //----------------HASTA ACÁ LOS COMANDOS PARA "AUTORES".----------------//
     
     });
+
 
     socket.on('error', (err) => {
         socket.write(`❌ Ocurrió un error: ${err.message}\n`);
