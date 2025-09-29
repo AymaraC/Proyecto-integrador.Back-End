@@ -32,7 +32,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                 
                 if(!bookData.title || !bookData.author || !bookData.publisher){     //Validamos que no esten vacíos los campos de título, autor y editorial.
                     socket.write('❌ ERROR: El título, autor y editorial son obligatorios.\n')
-                } else if(isNaN(Number(bookData.year))){                            //Validamos que el número ingresado sea válido.
+                } else if(!bookData.year || isNaN(Number(bookData.year))){            //Validamos que el número ingresado sea válido.
                     socket.write('ERROR: El año debe ser un número válido.\n');
                 } else {                                                            //Si pasa las validaciones agregamos el libro a nuestra biblioteca.
                     const response = BookController.addBook(
@@ -41,7 +41,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                         bookData.publisher,
                         bookData.year
                     );
-                    socket.write(response + 'n');
+                    socket.write(response + '\n');
                 } 
                 
             } else {
@@ -67,7 +67,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
         } else if(command === 'add publisher'){
             const publisher = command.replace('add publisher', '').trim();
 
-            if(!publisherName){
+            if(!publisher){
                 socket.write('❌ ERROR: El nombre de la editorial es obligatorio.\n');
             } else {
                 const response = PublisherController.addPublisher(publisher);
@@ -89,7 +89,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
             if(isJSON(response)){                                     
                 const authorData = JSON.parse(response);       
-                         
+
                 if(!authorData.name || !authorData.nationality){
                     socket.write('❌ ERROR: El nombre y la nacionalidad del autor son obligatorios.\n')
                 } else {
@@ -136,25 +136,6 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 server.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto... ${PORT}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
