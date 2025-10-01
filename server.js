@@ -1,8 +1,8 @@
 import net from 'net';
 import {v4 as uuidv4} from 'uuid';
-import BookController from "./controllers/booksController";
-import PublisherController from './controllers/publishersController';
-import AuthorController from './controllers/authorsController';
+import BookController from "./controllers/booksController.js";
+import PublisherController from './controllers/publishersController.js';
+import AuthorController from './controllers/authorsController.js';
 
 const PORT = 8080;
 
@@ -17,12 +17,12 @@ server.on('connection', (socket) => {                       //Le asignamos un id
     socket.write('¡Bienvenido a nuestra biblioteca! 📚\n')
 
     socket.on('data', (data) => {
-        const command = data.toString().trim().toLowerCase()    //Utilizamos el .toString() para convertir el buffer a string, utilizamos el .trim()
+        const command = data.toString().trim().toLowerCase().normalize('NFC')    //Utilizamos el .toString() para convertir el buffer a string, utilizamos el .trim(), el normalize para evitar errores por tildes y el .toLowerCase() para pasar a minuscula los comandos que escriba el cliente.
                                                                 //para eliminar espacios innecesarios y el .toLowerCase() para evitar errores dependiendo de como escriba el cliente.
 
         if(command === 'get books'){                            //Si el cliente envía 'get books' le pedimos al controlador que devuelva todos los libros.
         const response = BookController.getBooks();
-        socket.write(response + '\n');
+        socket.write(JSON.stringify(response), 'utf8');         //Utilizamos el 'utf-8' para que pueda soportar las tildes y los caracteres extraños como la 'ñ'
             
         } else if (command.startsWith('add book')){             //Si el comando comienza con 'add book', lo eliminamos para quedarnos solo con los datos del libro
             const bookDataString = command.replace('add book', '').trim()
@@ -41,7 +41,8 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                         bookData.publisher,
                         bookData.year
                     );
-                    socket.write(response + '\n');
+                    socket.write(JSON.stringify(response), 'utf8');
+
                 } 
                 
             } else {
@@ -55,7 +56,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
         } else if(command.startsWith('delete book')){
             const title = command.replace('delete book', '').trim();
-            socket.write(BookController.deleteBook(title) + '\n');
+            socket.write(BookController.deleteBook(title) + '\n', 'utf-8');
         }
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "LIBROS".----------------//
@@ -71,18 +72,18 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                 socket.write('❌ ERROR: El nombre de la editorial es obligatorio.\n');
             } else {
                 const response = PublisherController.addPublisher(publisher);
-                socket.write(response + '\n');
+                socket.write(response + '\n', 'utf-8');
             }
         } else if(command === 'find publisher'){
             const publisher = command.replace('find publisher', '').trim();
-            socket.write(PublisherController.findPublisher(publisher) + '\n');
+            socket.write(PublisherController.findPublisher(publisher) + '\n', 'utf-8');
         }
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "EDITORIALES".----------------//
 
           else if(command === 'get authors'){
             const authors = AuthorController.getAuthors();
-            socket.write(authors + '\n');
+            socket.write(authors + '\n', 'utf-8');
 
         } else if(command === 'add author'){
             const response = command.replace('add author', '').trim();
@@ -94,20 +95,22 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                     socket.write('❌ ERROR: El nombre y la nacionalidad del autor son obligatorios.\n')
                 } else {
                     const response = AuthorController.addAuthor(authorData.name, authorData.nationality);
-                    socket.write(response + '\n');
+                    socket.write(response + '\n', 'utf-8');
                 }
 
             } else {
                 socket.write('❌ ERROR: formato de JSON no válido.\n')
             }
 
-        } else if(command === 'find author'){
-            const response = command.replace('find author', '').trim();
-            socket.write(AuthorController.findAuthor(response) + '\n');
+        } else if(command.startsWith('find author')) {
+                const response = command.replace('find author', '').trim();
+
+                const { name, nationality } = JSON.parse(response); 
+                socket.write(AuthorController.findAuthor(name, nationality) + '\n', 'utf-8');
         
         } else if(command === 'delete author'){
             const author = command.replace('delete author', '').trim()
-            socket.write(AuthorController.deleteAuthor(author) + '\n');
+            socket.write(AuthorController.deleteAuthor(author) + '\n', 'utf-8');
         } 
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "AUTORES".----------------//
