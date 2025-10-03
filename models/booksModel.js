@@ -12,20 +12,10 @@ const publishersPath = path.join(__dirname, '../data/publishers.json');
 
 const BookModel = {
     getBook: () => {
+   
     const bookData = fs.readFileSync(bookPath, 'utf-8');
-    const authorData = fs.readFileSync(authorsPath, 'utf-8');
-    const publisherData = fs.readFileSync(publishersPath, 'utf-8');
-
-    const bookJson = JSON.parse(bookData);
-    const authorsJson = JSON.parse(authorData);
-    const publishersJson = JSON.parse(publisherData);
-
-    return bookJson.map(book => ({
-        title: book.title,
-        authorName: authorsJson.find(a => a.id === book.authorId)?.name || 'Autor desconocido',
-        publisherName: publishersJson.find(p => p.id === book.publisherId)?.name || 'Editorial desconocida',
-        year: book.year || 'Año desconocido'
-        }));
+    return JSON.parse(bookData); // Devuelve los datos crudos, libros con ID
+    
     },
 
     addBook : (title, authorName, publisherName, year) => {
@@ -45,7 +35,7 @@ const BookModel = {
                 name: authorName
             };
             authorsJson.push(author);  //Agregamos el autor al array
-            fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2)); //Lo escribimos y guardamos de formato JS a JSON.
+            fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2), 'utf-8'); //Lo escribimos y guardamos de formato JS a JSON.
         };
 
         let publisher = publisherJson.find(e => e.name === publisherName);
@@ -56,7 +46,7 @@ const BookModel = {
                 name: publisherName
             }
             publisherJson.push(publisher);
-            fs.writeFileSync(publishersPath, JSON.stringify(publisherJson, null, 2))
+            fs.writeFileSync(publishersPath, JSON.stringify(publisherJson, null, 2), 'utf-8')
         };
 
         const newBook = {
@@ -68,7 +58,7 @@ const BookModel = {
         };
 
         booksJson.push(newBook);        //Lo agregamos al array
-        fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2));     //Escribimos el array
+        fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2), 'utf-8');     //Escribimos el array
 
         return newBook;  //Devolvemos el objeto con el libro agregado.
     },
@@ -76,7 +66,7 @@ const BookModel = {
     findBook : (title) => {
 
         const books = BookModel.getBook(); // usa getBook para tener los nombres
-        return books.find(b => b.title === title) || null; //Devuelve el libro y sino lo encuentra devuelve null
+        return books.find(b => b.title.toLowerCase() === title.toLowerCase()) || null; //Devuelve el libro y sino lo encuentra devuelve null
     },
 
     deleteBook : (title) => {
@@ -89,7 +79,7 @@ const BookModel = {
         }
 
         const deleted = booksJson.filter(b => b.title !== title);
-        fs.writeFileSync(bookPath, JSON.stringify(deleted, null, 2));
+        fs.writeFileSync(bookPath, JSON.stringify(deleted, null, 2), 'utf-8');
         return find;             //Devuelve el libro eliminado.
     }
 };

@@ -1,30 +1,30 @@
 [
   {
-    "id": "18",
-    "title": "Harry Potter y el prisionero de Azkaban",
-    "authorId": "1",
-    "publisherId": "29",
+    "id": "d28dc9d3-0201-4b6b-8678-88f036bae0bd",
+    "title": "eclipse",
+    "authorId": "b3ae3287-2176-4afd-b44c-42a334f08b05",
+    "publisherId": "f19c012b-6213-4f23-b373-4cec64a7a4eb",
+    "year": "2005"
+  },
+  {
+    "id": "dc6a9c4b-d89f-4a64-9451-d3f13fa40152",
+    "title": "harry potter y el prisionero de azkaban",
+    "authorId": "8353850a-d1b9-4dab-ada3-880bdf57a73a",
+    "publisherId": "f19c012b-6213-4f23-b373-4cec64a7a4eb",
     "year": "1999"
   },
   {
-    "id": "15",
-    "title": "Harry Potter y el caliz del fuego",
-    "authorId": "1",
-    "publisherId": "29",
-    "year": "2000"
+    "id": "d5c738e6-f499-4ab8-9fbb-5712a4133c34",
+    "title": "muchas vidas muchos maestros",
+    "authorId": "123a114c-a835-4930-a5e9-41efa49177f8",
+    "publisherId": "69c565fe-9162-42be-b3f0-736883523299",
+    "year": "1986"
   },
   {
-    "id": "26",
-    "title": "El reino del revés",
-    "authorId": "3",
-    "publisherId": "30",
-    "year": "1963"
-  },
-  {
-    "id": "ccabe07e-f9c4-4e24-a884-2abb1bdb3ddb",
-    "title": "no culpes al karma de lo que te pasa",
-    "authorId": "6a438f61-4411-471a-8abb-40beb933ddf7",
-    "publisherId": "6bf16c15-fce2-4ec8-97de-c6d60c4c0b2e",
-    "year": "2010"
+    "id": "795aaac7-3601-4d64-bcee-d70e9b1b9f54",
+    "title": "harry potter y la piedra filosofal",
+    "authorId": "8353850a-d1b9-4dab-ada3-880bdf57a73a",
+    "publisherId": "f19c012b-6213-4f23-b373-4cec64a7a4eb",
+    "year": "1997"
   }
 ]

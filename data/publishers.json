@@ -1,17 +1,5 @@
 [
   {
-    "id": "30",
-    "name": "Alfaguara"
-  },
-  {
-    "id": "29",
-    "name": "Salamandra"
-  },
-  {
-    "id": "13",
-    "name": "Penguin Libros"
-  },
-  {
     "id": "4d68be0d-0059-45b7-816a-07ba831452c6",
     "name": "Minotauro"
   },
@@ -26,5 +14,29 @@
   {
     "id": "6bf16c15-fce2-4ec8-97de-c6d60c4c0b2e",
     "name": "pepito"
+  },
+  {
+    "id": "f19c012b-6213-4f23-b373-4cec64a7a4eb",
+    "name": "alfaguara"
+  },
+  {
+    "id": "69c565fe-9162-42be-b3f0-736883523299",
+    "name": "b de bolsillo"
+  },
+  {
+    "id": "ff832663-a4f5-43b2-afd7-9909e3c06b06",
+    "name": "akal"
+  },
+  {
+    "id": "f903607c-5f0b-4ff6-98b1-a7bc2a848492",
+    "name": "ni idea"
+  },
+  {
+    "id": "e6245706-16d8-4e11-8f4a-87bf1e34717c",
+    "name": "vd"
+  },
+  {
+    "id": "a44deac9-1e19-4e7a-a245-8a1bdc656026",
+    "name": "gneiw"
   }
 ]

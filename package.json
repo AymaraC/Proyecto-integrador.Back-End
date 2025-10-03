@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "cabanal_aymara_book_api",
+  "version": "1.0.0",
+  "description": "API Gestion de Biblioteca",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cabanal Aymara",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10",
+    "uuid": "^13.0.0"
+  }
+}

@@ -27,7 +27,7 @@ const AuthorModel = {
         }
     };
         authorJson.push(author)
-        fs.writeFileSync(authorsPath, JSON.stringify(authorJson, null, 2));
+        fs.writeFileSync(authorsPath, JSON.stringify(authorJson, null, 2), 'utf-8');
         return author;  //Devuelve el objeto agregado.
     },
     
@@ -59,7 +59,7 @@ const AuthorModel = {
             return null;  //Sino lo encontró devuelve null
         } else {
             const updateAuthors = authorJson.filter(a => a.name !== name); 
-            fs.writeFileSync(authorsPath, JSON.stringify(updateAuthors, null, 2));
+            fs.writeFileSync(authorsPath, JSON.stringify(updateAuthors, null, 2), 'utf-8');
             return author;
         
         }

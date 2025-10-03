@@ -28,7 +28,7 @@ const PublisherModel = {
             name
         }
         fileJson.push(newPublisher);
-        fs.writeFileSync(publisherPath, JSON.stringify(fileJson, null, 2));
+        fs.writeFileSync(publisherPath, JSON.stringify(fileJson, null, 2), 'utf-8');
         return newPublisher;
     },
 

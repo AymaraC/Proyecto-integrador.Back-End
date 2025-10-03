@@ -1,26 +1,43 @@
 [
   {
-    "id": "1",
-    "name": "J.K.Rowling",
-    "nationality": "British"
-  },
-  {
-    "id": "2",
-    "name": "Brian Weiss",
-    "nationality": "American"
-  },
-  {
-    "id": "3",
-    "name": "Maria Elena Walsh",
-    "nationality": "Argentine"
-  },
-  {
     "id": "fb29f942-288e-4bd7-bcb6-57b36c96a26a",
     "name": "J.R.R. Tolkien"
   },
   {
     "id": "16ddc2cf-0132-40bb-abf6-68b446aa4359",
     "name": "Antoine de Saint-Exupéry"
+  },
+  {
+    "id": "6a438f61-4411-471a-8abb-40beb933ddf7",
+    "name": "pepito"
+  },
+  {
+    "id": "b3ae3287-2176-4afd-b44c-42a334f08b05",
+    "name": "sthephenie meyer"
+  },
+  {
+    "id": "8353850a-d1b9-4dab-ada3-880bdf57a73a",
+    "name": "j.k.rowling"
+  },
+  {
+    "id": "123a114c-a835-4930-a5e9-41efa49177f8",
+    "name": "brian weiss"
+  },
+  {
+    "id": "d8199a05-0551-41fd-afa0-d285dfcb098e",
+    "name": "jane auten"
+  },
+  {
+    "id": "de6dd8b7-288b-40bd-9d8d-9cf03b474d33",
+    "name": "dan brown"
+  },
+  {
+    "id": "ec49381a-e761-4942-8697-d9dd8f651226",
+    "name": "vd"
+  },
+  {
+    "id": "da5cfff3-a769-44ad-8d41-bd89cb6e02a3",
+    "name": "gnewngi"
   },
   {
     "id": "6a438f61-4411-471a-8abb-40beb933ddf7",
