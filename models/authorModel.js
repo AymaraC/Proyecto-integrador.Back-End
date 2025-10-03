@@ -37,13 +37,13 @@ const AuthorModel = {
 
         let results = authorJson;       //Le asignamos el array con el los autores que se encuentran en nuestra biblioteca actualemente
 
-        if(name){               //Filtra por nombre en el caso de que se haya elegido nombre.
-            results= results.filter(a => a.name === name);
-        }
+        if(name){                       //Filtra por nombre 
+            results= results.filter(a => a.name.toLowerCase().trim() === name.toLowerCase().trim());
+        };
 
-        if(nationality){        //Filtra por nacionalidad si fue elegida.
-            results = results.filter(a => a.nationality === nationality);
-        }
+        if(nationality){                //Filtra por nacionalidad
+            results = results.filter(a => a.nationality.toLowerCase().trim() === nationality.toLowerCase().trim());
+        };
 
         return results;         //Devuelve el array de objetos sin formatear.
 

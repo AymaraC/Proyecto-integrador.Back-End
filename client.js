@@ -38,36 +38,48 @@ function handleOption(option) {
         case '2': 
             addBookFlow(); 
                 break;
-        case '3': rl.question('Título a buscar: ', (title) => 
-            client.write(`find book ${title}`));
+        case '3': 
+            rl.question('Título a buscar: ', (title) => 
+                client.write(`find book ${title}`));
                  break;
-        case '4': rl.question('Título a eliminar: ', (title) => 
-            client.write(`delete book ${title}`)); 
+        case '4': 
+            rl.question('Título a eliminar: ', (title) => 
+                client.write(`delete book ${title}`)); 
                 break;
-        case '5': client.write('get authors'); 
+        case '5': 
+            client.write('get authors'); 
                 break;
-        case '6': addAuthorFlow(); 
+        case '6': 
+            addAuthorFlow(); 
                 break;
-        case '7': rl.question('Nombre del autor a buscar: ', (name) => 
-            client.write(`find author ${name}`)); 
+        case '7': 
+           rl.question('Nombre del autor que desee buscar: ', (name) => {
+            rl.question('Nacionalidad (opcional): ', (nationality) => {
+                const authorF = {name, nationality: nationality || null};
+                client.write('find author ' + JSON.stringify(authorF), 'utf-8'); 
+                });
+           });
+           break;
+        case '8': 
+            client.write('get publishers'); 
                 break;
-        case '8': client.write('get publishers'); 
+        case '9': 
+            addPublisherFlow(); 
                 break;
-        case '9': addPublisherFlow(); 
-                break;
-        case '10': rl.question('Nombre de la editorial a buscar: ', (name) => 
-            client.write(`find publisher ${name}`)); 
+        case '10': 
+            rl.question('Nombre de la editorial a buscar: ', (name) => 
+                client.write(`find publisher ${name}`)); 
                 break;
         case '0': 
             console.log('👋 Cerrando cliente...');
-            client.end();
-            rl.close();
-            return;
+                client.end();
+                rl.close();
+                break;        
         default: 
             console.log('❌ Opción no reconocida');
             showMenu();
-    }
-}
+    };
+};
 
 function addBookFlow() {                        //Función para validar que los campos no estén vacios.
     rl.question('Título: ', (title) => {

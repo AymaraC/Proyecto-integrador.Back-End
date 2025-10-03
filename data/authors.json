@@ -24,10 +24,6 @@
     "name": "brian weiss"
   },
   {
-    "id": "d8199a05-0551-41fd-afa0-d285dfcb098e",
-    "name": "jane auten"
-  },
-  {
     "id": "de6dd8b7-288b-40bd-9d8d-9cf03b474d33",
     "name": "dan brown"
   },
@@ -42,5 +38,10 @@
   {
     "id": "6a438f61-4411-471a-8abb-40beb933ddf7",
     "name": "pepito"
+  },
+  {
+    "id": "f978772b-5c72-482d-94c2-b7e876bb3111",
+    "name": "catriel",
+    "nationality": "argentino"
   }
 ]

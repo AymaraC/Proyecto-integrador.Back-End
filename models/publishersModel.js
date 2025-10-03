@@ -36,7 +36,7 @@ const PublisherModel = {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
         const fileJson = JSON.parse(readFile);
 
-        const findPublisher = fileJson.find(p => p.name === name);
+        const findPublisher = fileJson.find(p => p.name.toLowerCase().trim() === name.toLowerCase().trim());
         return findPublisher || null;
     }
 };

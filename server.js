@@ -106,7 +106,8 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
         } else if(command.startsWith('find author ')) {
                 const response = command.replace('find author ', '').trim();
-
+                console.log('El cliente busca el author: ', response);
+                
                 const { name, nationality } = JSON.parse(response); 
                 socket.write(AuthorController.findAuthor(name, nationality) + '\n', 'utf-8');
         

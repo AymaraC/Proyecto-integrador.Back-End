@@ -36,7 +36,7 @@ const BookController = {
         } else {
             const author = AuthorModel.getAuthors().find(a => a.id === book.authorId);
             const publisher = PublisherModel.getPublishers().find(p => p.id === book.publisherId);
-            return LibraryView.formatResponse(`📚 Título: ${book.title} Autor: ${author ? author.name : 'Desconocido'} Editorial: ${publisher ? publisher.name : 'Desconocida'} Año: ${book.year}`);
+            return LibraryView.formatResponse(`📚 Título: ${book.title} | Autor: ${author ? author.name : 'Desconocido'} | Editorial: ${publisher ? publisher.name : 'Desconocida'} | Año: ${book.year}`);
         };
         
     },

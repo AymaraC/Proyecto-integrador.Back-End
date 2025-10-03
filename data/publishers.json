@@ -7,10 +7,7 @@
     "id": "9eac2272-35b7-4909-933e-40cf04d7f1a4",
     "name": "Anagrama"
   },
-  {
-    "id": "07d880b1-3abd-440e-91d2-35a09f5b749a",
-    "name": "Editorial XYZ"
-  },
+  
   {
     "id": "6bf16c15-fce2-4ec8-97de-c6d60c4c0b2e",
     "name": "pepito"
@@ -26,10 +23,6 @@
   {
     "id": "ff832663-a4f5-43b2-afd7-9909e3c06b06",
     "name": "akal"
-  },
-  {
-    "id": "f903607c-5f0b-4ff6-98b1-a7bc2a848492",
-    "name": "ni idea"
   },
   {
     "id": "e6245706-16d8-4e11-8f4a-87bf1e34717c",
@@ -54,5 +47,13 @@
   {
     "id": "c2e13f46-c32b-4f61-9e55-3f347b412bdd",
     "name": "hola hola"
+  },
+  {
+    "id": "7bd92172-165f-4501-9eda-12ca83481c24",
+    "name": "grupo planeta"
+  },
+  {
+    "id": "3b39b5c4-4c11-4dd7-a399-9d1ff5703fd2",
+    "name": "pepito2"
   }
 ]
