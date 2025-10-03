@@ -67,7 +67,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             const response = PublisherController.getPublishers();
             socket.write(response + '\n', 'utf-8');
 
-        } else if(command === 'add publisher '){
+        } else if(command.startsWith('add publisher ')){
             const publisher = command.replace('add publisher ', '').trim();
 
             if(!publisher){
@@ -76,7 +76,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                 const response = PublisherController.addPublisher(publisher);
                 socket.write(response + '\n', 'utf-8');
             }
-        } else if(command === 'find publisher '){
+        } else if(command.startsWith('find publisher ')){
             const publisher = command.replace('find publisher ', '').trim();
             socket.write(PublisherController.findPublisher(publisher) + '\n', 'utf-8');
         }

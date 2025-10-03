@@ -19,7 +19,7 @@ const PublisherModel = {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
         const fileJson = JSON.parse(readFile);
         
-        let exists = fileJson.find(p => p.name === name);
+        let exists = fileJson.find(p => p.name.toLowerCase() === name.toLowerCase());
         if(exists){
             return null;      //Como ya existe devuelve null
         }

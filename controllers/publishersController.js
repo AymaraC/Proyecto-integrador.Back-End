@@ -15,7 +15,7 @@ const PublisherController = {
     addPublisher : (name) => {
         const newPublisher = PublisherModel.addPublisher(name);
         if(!newPublisher){
-            return LibraryView.formatResponse(`La editorial ${name} ya existe en nuestra biblioteca.`)
+            return LibraryView.formatResponse(`❌ No se puede agregar la editorial '${name}' ya que existe en nuestra biblioteca.`)
         } else {
             return LibraryView.formatResponse(`✅ Editorial ${name} agregada con éxito.`);
         }

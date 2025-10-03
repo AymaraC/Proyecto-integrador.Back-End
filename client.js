@@ -96,8 +96,9 @@ function addAuthorFlow() {
 
 function addPublisherFlow() {
     rl.question('Nombre de la editorial: ', (name) => {
-        if (!name.trim()) return console.log('❌ Nombre obligatorio') || showMenu();
-        client.write('add publisher ' + JSON.stringify({ publisher: name }));
+        if (!name.trim()) 
+            return console.log('❌ Nombre obligatorio') || showMenu();
+        client.write(`add publisher ${name}`, 'utf-8');
     });
 }
 
