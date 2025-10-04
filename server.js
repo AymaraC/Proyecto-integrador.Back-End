@@ -20,11 +20,11 @@ server.on('connection', (socket) => {                       //Le asignamos un id
         const command = data.toString().trim().toLowerCase().normalize('NFC')    //Utilizamos el .toString() para convertir el buffer a string, el normalize para evitar errores por tildes, utilizamos el .trim()
                                                                                 //para eliminar espacios innecesarios y el .toLowerCase() para evitar errores dependiendo de como escriba el cliente.
 
-        if(command === 'get books'){                            //Si el cliente envía 'get books' le pedimos al controlador que devuelva todos los libros.
+        if(command === 'get books'){                                            //Si el cliente envía 'get books' le pedimos al controlador que devuelva todos los libros.
         const response = BookController.getBooks();
-        socket.write(response + '\n', 'utf-8');                        //Utilizamos el 'utf-8' para que pueda soportar las tildes y los caracteres extraños como la 'ñ'
+        socket.write(response + '\n', 'utf-8');                                 //Utilizamos el 'utf-8' para que pueda soportar las tildes y los caracteres extraños como la 'ñ'
             
-        } else if (command.startsWith('add book ')){             //Si el comando comienza con 'add book', lo eliminamos para quedarnos solo con los datos del libro
+        } else if (command.startsWith('add book ')){                            //Si el comando comienza con 'add book', lo eliminamos para quedarnos solo con los datos del libro
             const bookDataString = command.replace('add book ', '').trim()
 
             if(isJSON(bookDataString)){                                     //Verificamos si el comando es formato JSON cuando hay 2 o más campos.
@@ -78,7 +78,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             }
         } else if(command.startsWith('find publisher ')){
             const publisher = command.replace('find publisher ', '').trim();
-            socket.write(PublisherController.findPublisher(publisher) + '\n', 'utf-8');
+//REVISAR QUE LA CAGUE Y FALTA EL SOCKETWRITE
         }
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "EDITORIALES".----------------//
@@ -110,17 +110,12 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                 
                 const { name, nationality } = JSON.parse(response); 
                 socket.write(AuthorController.findAuthor(name, nationality) + '\n', 'utf-8');
-        
-        } else if(command.startsWith('delete author ')){
-            const author = command.replace('delete author ', '').trim()
-            socket.write(AuthorController.deleteAuthor(author) + '\n', 'utf-8');
         } 
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "AUTORES".----------------//
     
     });
-
-
+    
     socket.on('error', (err) => {
         socket.write(`❌ Ocurrió un error: ${err.message}\n`, 'utf-8');
         console.error(err.message);

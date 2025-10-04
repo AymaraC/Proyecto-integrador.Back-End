@@ -37,7 +37,7 @@ console.log(BookController.findBook("El Principito"));
 console.log('Eliminamos libro:');
 console.log(BookController.deleteBook("El Principito"));*/
 
-import net from 'net';
+/*import net from 'net';
 import readlineSync from 'readline-sync';
 
 const PORT = 8080;
@@ -140,7 +140,19 @@ function showMenu(){
 
     client.on('error', (err) => {
         console.log('ERROR: ',err.message);
-    });
+    });*/
+
+
+    const response = {
+  name: "alfaguara",
+  books: ["Libro 1 (1988)", "Libro 2 (1999)"]
+};
+
+// Simulamos cómo debería imprimir tu cliente
+console.log('Editorial:', response.name);
+console.log('Libros:');
+response.books.forEach(b => console.log('-', b));
+
 
    
 

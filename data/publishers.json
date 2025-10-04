@@ -1,59 +1,14 @@
 [
   {
-    "id": "4d68be0d-0059-45b7-816a-07ba831452c6",
-    "name": "Minotauro"
-  },
-  {
-    "id": "9eac2272-35b7-4909-933e-40cf04d7f1a4",
-    "name": "Anagrama"
-  },
-  
-  {
-    "id": "6bf16c15-fce2-4ec8-97de-c6d60c4c0b2e",
-    "name": "pepito"
-  },
-  {
-    "id": "f19c012b-6213-4f23-b373-4cec64a7a4eb",
+    "id": "d8038f91-cd9a-4091-8451-a8dc9f98e27c",
     "name": "alfaguara"
   },
   {
-    "id": "69c565fe-9162-42be-b3f0-736883523299",
-    "name": "b de bolsillo"
+    "id": "65542201-6622-4107-bb87-3eda36be839e",
+    "name": "sudamericana"
   },
   {
-    "id": "ff832663-a4f5-43b2-afd7-9909e3c06b06",
-    "name": "akal"
-  },
-  {
-    "id": "e6245706-16d8-4e11-8f4a-87bf1e34717c",
-    "name": "vd"
-  },
-  {
-    "id": "a44deac9-1e19-4e7a-a245-8a1bdc656026",
-    "name": "gneiw"
-  },
-  {
-    "id": "7fdd2b13-36fd-41c7-af08-397b48123201",
-    "name": "{\"publisher\":\"hola hola\"}"
-  },
-  {
-    "id": "c05bc002-78de-4c07-a20a-db606e4519bd",
-    "name": "{\"publisher\":\"alfaguara\"}"
-  },
-  {
-    "id": "0fccb30b-8464-469b-b044-950ca07aba98",
-    "name": "{\"publisher\":\"pepito\"}"
-  },
-  {
-    "id": "c2e13f46-c32b-4f61-9e55-3f347b412bdd",
-    "name": "hola hola"
-  },
-  {
-    "id": "7bd92172-165f-4501-9eda-12ca83481c24",
-    "name": "grupo planeta"
-  },
-  {
-    "id": "3b39b5c4-4c11-4dd7-a399-9d1ff5703fd2",
-    "name": "pepito2"
+    "id": "5c4a2b75-fee7-4ecc-880b-362514f30e7e",
+    "name": "alma"
   }
 ]

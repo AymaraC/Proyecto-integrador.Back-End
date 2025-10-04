@@ -27,12 +27,13 @@ const BookModel = {
         const authorsJson = JSON.parse(authorData);
         const publisherJson = JSON.parse(publishersData);
 
-        let author = authorsJson.find(a => a.name === authorName);
+        let author = authorsJson.find(a => a.name.toLowerCase().trim() === authorName.toLowerCase().trim());
         
         if(!author){            //Sino existe el autor se agrega con un id aleatorio.
             author = {
                 id: uuidv4(),
-                name: authorName
+                name: authorName,
+                nationality: nationality || 'desconocida'
             };
             authorsJson.push(author);  //Agregamos el autor al array
             fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2), 'utf-8'); //Lo escribimos y guardamos de formato JS a JSON.
@@ -60,6 +61,7 @@ const BookModel = {
         booksJson.push(newBook);        //Lo agregamos al array
         fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2), 'utf-8');     //Escribimos el array
 
+        console.log(`Libro "${title}" agregado con el autor "${author.name}" y nacionalidad "${author.nationality}".`);
         return newBook;  //Devolvemos el objeto con el libro agregado.
     },
 

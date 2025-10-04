@@ -6,10 +6,17 @@ import LibraryView from '../views/viewResponse.js';
 const BookController = {
     getBooks : () => {      
         const books = BookModel.getBook()                           //Obtenemos todos los libros 
+        
+        if(!books || books.length === 0){
+            return LibraryView.formatResponse(
+                '📖🚫 No hay libros disponibles.'
+            );
+        };
+        
         const booksList = books.map(b => {
         const author = AuthorModel.getAuthors().find(a => a.id === b.authorId);
         const publisher = PublisherModel.getPublishers().find(p => p.id === b.publisherId);
-     
+
     return {
         title: b.title,
         authorId: author ? author.name : 'Desconocido',      //Utilizamos la misma key que la vista espera

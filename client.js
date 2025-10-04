@@ -116,9 +116,31 @@ function addPublisherFlow() {
 
 // Evento de datos del servidor
 client.on('data', (data) => {
-    console.log('\n' + data.toString());
+    const responseStr = data.toString().trim();
+    let response = responseStr;
+
+    // Si es JSON, lo parseamos
+    if (responseStr.startsWith('{') || responseStr.startsWith('[')) {
+        response = JSON.parse(responseStr);
+    }
+
+    // Si tiene books, es un publisher
+    if (response.books) {
+        console.log('\nEditorial:', response.name);
+        if (Array.isArray(response.books)) {
+            console.log('Libros:');
+            response.books.forEach(b => console.log('-', b));
+        } else {
+            console.log(response.books); // mensaje "no hay libros"
+        }
+    } else {
+        // cualquier otra respuesta (string o objeto)
+        console.log('\n', response);
+    }
+
     showMenu();
 });
+
 
 client.on('connect', () => {
     console.log('Conectando al servidor..');

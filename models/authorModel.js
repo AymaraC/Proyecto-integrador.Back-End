@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const authorsPath = path.join(__dirname, '../data/authors.json');
+const booksPath = path.join(__dirname, '../data/books.json');
 
 const AuthorModel = {
     getAuthors : () => {
@@ -33,7 +34,9 @@ const AuthorModel = {
     
     findAuthor : (name, nationality) => {
         const authorData = fs.readFileSync(authorsPath, 'utf-8');
+        const booksData = fs.readFileSync(booksPath, 'utf-8');
         const authorJson = JSON.parse(authorData);
+        const booksJson = JSON.parse(booksData);
 
         let results = authorJson;       //Le asignamos el array con el los autores que se encuentran en nuestra biblioteca actualemente
 
@@ -42,28 +45,17 @@ const AuthorModel = {
         };
 
         if(nationality){                //Filtra por nacionalidad
-            results = results.filter(a => a.nationality.toLowerCase().trim() === nationality.toLowerCase().trim());
+        results = results.filter(a => a.nationality && a.nationality.toLowerCase().trim() === nationality.toLowerCase().trim());
         };
 
-        return results;         //Devuelve el array de objetos sin formatear.
+        results = results.map(a => {
+            const booksByAuthor = booksJson.filter(b => b.authorId === a.id);
+            return { ...a, books: booksByAuthor };
+        });
+
+        return results;         //Devuelve el array con los datos crudos.
 
     },
-
-    deleteAuthor : (name) => {
-        const authorData = fs.readFileSync(authorsPath, 'utf-8');
-        const authorJson = JSON.parse(authorData);
-
-        let author = authorJson.find(a => a.name === name);
-
-        if(!author){
-            return null;  //Sino lo encontró devuelve null
-        } else {
-            const updateAuthors = authorJson.filter(a => a.name !== name); 
-            fs.writeFileSync(authorsPath, JSON.stringify(updateAuthors, null, 2), 'utf-8');
-            return author;
-        
-        }
-    }
 
 };
 

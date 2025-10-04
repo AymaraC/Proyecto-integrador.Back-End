@@ -6,7 +6,7 @@ const AuthorController = {
         const authors = AuthorModel.getAuthors();
         
         if(authors.length === 0){
-            return LibraryView.formatResponse('No hay autores disponibles.')
+            return LibraryView.formatResponse('🪶🚫 No hay autores disponibles.')
         } else {
             return LibraryView.formatResponse(authors)
         }
@@ -24,22 +24,16 @@ const AuthorController = {
             return LibraryView.formatResponse('❌ No se encontró ningún autor con esas caracteristicas.')
         }
 
-        return LibraryView.formatResponse(author);
-    
-    },
+        const authorsForClient = author.map(a => ({            //Le devuelve al cliente un objeto JSON crudo.
+        name: a.name,
+        nationality: a.nationality,
+        books: a.books.length > 0 ? a.books.map(b => ({ title: b.title, year: b.year })) : []
+        }));
 
-    deleteAuthor : (name) => {
-        const deleted = AuthorModel.deleteAuthor(name);
-
-        if(!deleted){
-            return LibraryView.formatResponse(`No se encontró el autor ${name} en nuestra biblioteca.`)
-        } else {
-            return LibraryView.formatResponse(`✅ Autor '${name}' eliminado con éxito.`)
-        }
-
+        return authorsForClient;
     }
-
-}
+    
+};
 
 export default AuthorController;
 
