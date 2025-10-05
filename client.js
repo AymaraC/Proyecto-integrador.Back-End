@@ -11,7 +11,12 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+let ejecutando = true;
+
 function showMenu() {
+
+    if(!ejecutando) return;
+
     console.log('\n === MENÚ PRINCIPAL === ');
     console.log('1. GET BOOKS');
     console.log('2. ADD BOOK');
@@ -72,6 +77,7 @@ function handleOption(option) {
                 break;
         case '0': 
             console.log('👋 Cerrando cliente...');
+            ejecutando = false;
                 client.end();
                 rl.close();
                 break;        
@@ -96,7 +102,6 @@ function addBookFlow() {
                     rl.question('Año: ', (year) => {
                         if (!year.trim() || isNaN(Number(year))) return console.log('❌ Año inválido') || showMenu();
 
-                        // ACÁ title, author, nationality, publisher y year están todos definidos
                         client.write('add book ' + JSON.stringify({
                             title,
                             author,
@@ -132,6 +137,7 @@ function addPublisherFlow() {
 
 // Evento de datos del servidor
 client.on('data', (data) => {
+    if(!ejecutando) return              //En esta línea le indicamos que no haga nada si se está cerrando.
     const responseStr = data.toString().trim();
     let response = responseStr;
 
@@ -162,5 +168,11 @@ client.on('connect', () => {
     console.log('Conectando al servidor..');
 });
 
-client.on('error', (err) => console.error('ERROR:', err.message));
-client.on('end', () => console.log('Conexión cerrada por el servidor'));
+client.on('error', (err) => {
+    console.error('❌ ERROR: ', err.message)
+});
+
+client.on('end', () => {
+    console.log('Conexión cerrada por el servidor.');
+    ejecutando = false;
+});
