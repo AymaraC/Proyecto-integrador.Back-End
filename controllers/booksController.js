@@ -8,31 +8,30 @@ const BookController = {
         const books = BookModel.getBook()                           //Obtenemos todos los libros 
         
         if(!books || books.length === 0){
-            return LibraryView.formatResponse(
-                '📖🚫 No hay libros disponibles.'
-            );
+            return LibraryView.formatResponse('📖🚫 No hay libros disponibles.')
         };
         
-        const booksList = books.map(b => {
+        const booksList = books.map((b, index) => {
         const author = AuthorModel.getAuthors().find(a => a.id === b.authorId);
         const publisher = PublisherModel.getPublishers().find(p => p.id === b.publisherId);
-
-    return {
-        title: b.title,
-        authorId: author ? author.name : 'Desconocido',      //Utilizamos la misma key que la vista espera
-        publisherId: publisher ? publisher.name : 'Desconocida',
-        year: b.year
-        };
-    });
-        return LibraryView.formatResponse(booksList);         //Pasamos el array a la vista 
         
+        const authorName = author?.name || 'Desconocido';
+        const publisherName = publisher?.name || 'Desconocida';
+        const year = b.year || 'No especificado';
 
+        return `${index + 1}. ${b.title} | ${authorName} | ${publisherName} | ${year}`;
+
+    });
+        return LibraryView.formatResponse(`📚 Listado de nuestros libros:\n` + booksList.join('\n'));        
     },
 
-    addBook : (title, authorName, publisherName, year) => {                         //Recibe la solicitud de agregar un libro.
-        const newBook = BookModel.addBook(title, authorName, publisherName, year);  //Le pedimos al modelo que haga la operación necesaria.
-        return LibraryView.formatResponse(`✅ El libro '${newBook.title}' fue agregado con éxito.`)
-        
+    addBook: (title, authorName, publisherName, year, nationality) => {
+        const newBook = BookModel.addBook(title, authorName, publisherName, year, nationality);        
+        if(!newBook){
+            return LibraryView.formatResponse(`El libro ${title} ya se encuentra en nuestra biblioteca`);
+        } else {
+            return LibraryView.formatResponse(`📖 Libro ${newBook.title} agregado con éxito.`)
+        }
     },
 
     findBook : (title) => {

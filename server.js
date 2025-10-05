@@ -41,7 +41,8 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                         bookData.title,
                         bookData.author,
                         bookData.publisher,
-                        bookData.year
+                        bookData.year,
+                        bookData.nationality
                     );
                     socket.write(response + '\n', 'utf-8');
 

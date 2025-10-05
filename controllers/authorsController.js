@@ -8,8 +8,14 @@ const AuthorController = {
         if(authors.length === 0){
             return LibraryView.formatResponse('🪶🚫 No hay autores disponibles.')
         } else {
-            return LibraryView.formatResponse(authors)
-        }
+            const list = authors.map((a, index) => {
+                const name = a.name || 'Desconocido';
+                const nationality = a.nationality || '-';
+                return `${index + 1}. ${name} | ${nationality}`;
+            });
+
+            return LibraryView.formatResponse(`👤 Autores en nuestra biblioteca:\n` + list.join('\n'));
+        };
     },
 
     addAuthor : (name, nationality) => {

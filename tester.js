@@ -155,8 +155,133 @@ response.books.forEach(b => console.log('-', b));
 
 
    
+/*addBook : (title, authorName, publisherName, year) => {
+        const bookData = fs.readFileSync(bookPath, 'utf-8');
+        const authorData = fs.readFileSync(authorsPath, 'utf-8');
+        const publishersData = fs.readFileSync(publishersPath, 'utf-8');
+
+        const booksJson = JSON.parse(bookData);
+        const authorsJson = JSON.parse(authorData);
+        const publisherJson = JSON.parse(publishersData);
+
+        let author = authorsJson.find(a => a.name.toLowerCase().trim() === authorName.toLowerCase().trim());
+        
+        if(!author){            //Sino existe el autor se agrega con un id aleatorio.
+            author = {
+                id: uuidv4(),
+                name: authorName,
+                nationality: nationality || 'desconocida'
+            };
+            authorsJson.push(author);  //Agregamos el autor al array
+            fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2), 'utf-8'); //Lo escribimos y guardamos de formato JS a JSON.
+        };
+
+        let publisher = publisherJson.find(e => e.name === publisherName);
+
+        if(!publisher){
+            publisher = {
+                id: uuidv4(),
+                name: publisherName
+            }
+            publisherJson.push(publisher);
+            fs.writeFileSync(publishersPath, JSON.stringify(publisherJson, null, 2), 'utf-8')
+        };
+
+        const newBook = {
+            id: uuidv4(),       //Agrega un ID único
+            title,              
+            authorId : author.id,
+            publisherId: publisher.id,
+            year
+        };
+
+        booksJson.push(newBook);        //Lo agregamos al array
+        fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2), 'utf-8');     //Escribimos el array
+
+        console.log(`Libro "${title}" agregado con el autor "${author.name}" y nacionalidad "${author.nationality}".`);
+        return newBook;  //Devolvemos el objeto con el libro agregado.
+    },*/
+/*MODELO QUE FUNCIONA
+addAuthor : (name, nationality) => {
+        const authorData = fs.readFileSync(authorsPath, 'utf-8');
+        const authorJson = JSON.parse(authorData);
+        
+        let author = authorJson.find(a => a.name.toLowerCase().trim() === name.toLowerCase().trim());
+        
+        if(!author){
+            author = {id: uuidv4(),             //Creamos un objeto
+            name,
+            nationality:nationality || 'desconocida'
+        }
+        
+        authorJson.push(author)             //Agregamos el autor solo sino existía
+        fs.writeFileSync(authorsPath, JSON.stringify(authorJson, null, 2), 'utf-8');
+    };
+        
+        return author;  //Devuelve el objeto agregado.
+    },
+    
+    CONTROLADOR QUE FUNCIONA
+    addBook: (title, authorName, publisherName, year) => {
+        const newBook = BookModel.addBook(title, authorName, publisherName, year);        
+        if(!newBook){
+            return LibraryView.formatResponse(`El libro ${title} ya se encuentra en nuestra biblioteca`);
+        } else {
+            return LibraryView.formatResponse(`📖 Libro ${newBook.title} agregado con éxito.`)
+        }
+    },
+    SERVIDOR QUE FUNCIONA
+    } else if (command.startsWith('add book ')){                            //Si el comando comienza con 'add book', lo eliminamos para quedarnos solo con los datos del libro
+            const bookDataString = command.replace('add book ', '').trim()
+
+            if(isJSON(bookDataString)){                                     //Verificamos si el comando es formato JSON cuando hay 2 o más campos.
+                const bookData = JSON.parse(bookDataString);                //Si lo es, convertimos los datos a un objeto JSON 
+                
+                if(!bookData.title || !bookData.author || !bookData.publisher){     //Validamos que no esten vacíos los campos de título, autor y editorial.
+                    socket.write('❌ ERROR: El título, autor y editorial son obligatorios.\n', 'utf-8')
+                
+                } else if(!bookData.year || isNaN(Number(bookData.year))){            //Validamos que el número ingresado sea válido.
+                    socket.write('ERROR: El año debe ser un número válido.\n', 'utf-8');
+                
+                } else {                                                            //Si pasa las validaciones agregamos el libro a nuestra biblioteca.
+                    const response = BookController.addBook(
+                        bookData.title,
+                        bookData.author,
+                        bookData.publisher,
+                        bookData.year,
+                    );
+                    socket.write(response + '\n', 'utf-8');
+
+                } 
+                
+            } else {
+
+                socket.write('❌ ERROR: formato de JSON no válido.\n', 'utf-8')
+            }
 
 
+    CLIENTE QUE FUNCIONA:
+    function addBookFlow() {
+    rl.question('Título: ', (title) => {
+        if (!title.trim()) return console.log('❌ Título obligatorio') || showMenu();
+        rl.question('Autor: ', (author) => {
+            if (!author.trim()) return console.log('❌ Autor obligatorio') || showMenu();
+            rl.question('Editorial: ', (publisher) => {
+                if (!publisher.trim()) return console.log('❌ Editorial obligatoria') || showMenu();
+                rl.question('Año: ', (year) => {
+                    if (!year.trim() || isNaN(Number(year))) return console.log('❌ Año inválido') || showMenu();
+
+                    client.write('add book ' + JSON.stringify({
+                        title,
+                        author,
+                        publisher,
+                        year
+                    }));
+                });
+            });
+        });
+    });
+}*/
 
 
 

@@ -18,51 +18,48 @@ const BookModel = {
     
     },
 
-    addBook : (title, authorName, publisherName, year) => {
-        const bookData = fs.readFileSync(bookPath, 'utf-8');
-        const authorData = fs.readFileSync(authorsPath, 'utf-8');
-        const publishersData = fs.readFileSync(publishersPath, 'utf-8');
+      addBook: (title, authorName, publisherName, year, nationality) => {
+        // Leemos los JSON
+        const booksJson = JSON.parse(fs.readFileSync(bookPath, 'utf-8'));
+        const authorsJson = JSON.parse(fs.readFileSync(authorsPath, 'utf-8'));
+        const publishersJson = JSON.parse(fs.readFileSync(publishersPath, 'utf-8'));
 
-        const booksJson = JSON.parse(bookData);
-        const authorsJson = JSON.parse(authorData);
-        const publisherJson = JSON.parse(publishersData);
-
+        // Buscamos o agregamos el autor
         let author = authorsJson.find(a => a.name.toLowerCase().trim() === authorName.toLowerCase().trim());
-        
-        if(!author){            //Sino existe el autor se agrega con un id aleatorio.
+        if (!author) {
             author = {
                 id: uuidv4(),
                 name: authorName,
                 nationality: nationality || 'desconocida'
             };
-            authorsJson.push(author);  //Agregamos el autor al array
-            fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2), 'utf-8'); //Lo escribimos y guardamos de formato JS a JSON.
-        };
+            authorsJson.push(author);
+            fs.writeFileSync(authorsPath, JSON.stringify(authorsJson, null, 2), 'utf-8');
+        }
 
-        let publisher = publisherJson.find(e => e.name === publisherName);
-
-        if(!publisher){
+        // Buscamos o agregamos la editorial
+        let publisher = publishersJson.find(p => p.name.toLowerCase().trim() === publisherName.toLowerCase().trim());
+        if (!publisher) {
             publisher = {
                 id: uuidv4(),
                 name: publisherName
-            }
-            publisherJson.push(publisher);
-            fs.writeFileSync(publishersPath, JSON.stringify(publisherJson, null, 2), 'utf-8')
-        };
+            };
+            publishersJson.push(publisher);
+            fs.writeFileSync(publishersPath, JSON.stringify(publishersJson, null, 2), 'utf-8');
+        }
 
+        // Creamos el libro con IDs correctos
         const newBook = {
-            id: uuidv4(),       //Agrega un ID único
-            title,              
-            authorId : author.id,
+            id: uuidv4(),
+            title,
+            authorId: author.id,
             publisherId: publisher.id,
             year
         };
 
-        booksJson.push(newBook);        //Lo agregamos al array
-        fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2), 'utf-8');     //Escribimos el array
+        booksJson.push(newBook);
+        fs.writeFileSync(bookPath, JSON.stringify(booksJson, null, 2), 'utf-8');
 
-        console.log(`Libro "${title}" agregado con el autor "${author.name}" y nacionalidad "${author.nationality}".`);
-        return newBook;  //Devolvemos el objeto con el libro agregado.
+        return newBook;
     },
 
     findBook : (title) => {

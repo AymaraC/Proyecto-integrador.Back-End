@@ -19,5 +19,25 @@
     "id": "042b2710-a00f-4c09-a9ce-c6270ccdceaa",
     "name": "maria elena walsh",
     "nationality": "argentina"
+  },
+  {
+    "id": "d026afa0-6f97-4f20-9ae1-0cb66603fb2f",
+    "name": "pepox",
+    "nationality": "argentina"
+  },
+  {
+    "id": "48e74e1c-464c-4e91-8fcf-632a0922b81a",
+    "name": "paulo coelho",
+    "nationality": "desconocida"
+  },
+  {
+    "id": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "name": "gabriel rolon",
+    "nationality": "desconocida"
+  },
+  {
+    "id": "4fffa09a-34b4-4c77-9b35-8d26c88d1442",
+    "name": "cassandra clare",
+    "nationality": "colombiana"
   }
 ]

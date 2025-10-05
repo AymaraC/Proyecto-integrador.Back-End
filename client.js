@@ -81,21 +81,37 @@ function handleOption(option) {
     };
 };
 
-function addBookFlow() {                        //Función para validar que los campos no estén vacios.
+function addBookFlow() {
     rl.question('Título: ', (title) => {
         if (!title.trim()) return console.log('❌ Título obligatorio') || showMenu();
+
         rl.question('Autor: ', (author) => {
             if (!author.trim()) return console.log('❌ Autor obligatorio') || showMenu();
-            rl.question('Editorial: ', (publisher) => {
-                if (!publisher.trim()) return console.log('❌ Editorial obligatoria') || showMenu();
-                rl.question('Año: ', (year) => {
-                    if (!year.trim() || isNaN(Number(year))) return console.log('❌ Año inválido') || showMenu();
-                    client.write('add book ' + JSON.stringify({ title, author, publisher, year }));
+
+            rl.question('Nacionalidad del autor (opcional): ', (nationality) => {
+
+                rl.question('Editorial: ', (publisher) => {
+                    if (!publisher.trim()) return console.log('❌ Editorial obligatoria') || showMenu();
+
+                    rl.question('Año: ', (year) => {
+                        if (!year.trim() || isNaN(Number(year))) return console.log('❌ Año inválido') || showMenu();
+
+                        // ACÁ title, author, nationality, publisher y year están todos definidos
+                        client.write('add book ' + JSON.stringify({
+                            title,
+                            author,
+                            nationality: nationality || null,
+                            publisher,
+                            year
+                        }));
+                    });
                 });
+
             });
         });
     });
 }
+
 
 function addAuthorFlow() {
     rl.question('Nombre del autor: ', (name) => {

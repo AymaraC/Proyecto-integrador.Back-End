@@ -7,9 +7,14 @@ const PublisherController = {
 
         if(publishers.length === 0){
             return LibraryView.formatResponse(`📰🚫 No hay editoriales disponibles.`)
-        } else {
-            return LibraryView.formatResponse(publishers)
-        };
+        } 
+            const list = publishers.map((p, index) => {
+                const name = p.name || 'Desconocida';
+                return `${index + 1}. ${name}`;
+            });
+    
+        return LibraryView.formatResponse(`🏢 Editoriales en nuestra biblioteca:\n` + list.join('\n'));
+
     },
 
     addPublisher : (name) => {

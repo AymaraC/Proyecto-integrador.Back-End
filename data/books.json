@@ -33,5 +33,70 @@
     "authorId": "b9335d99-9d99-43b5-a044-4463f721362f",
     "publisherId": "d8038f91-cd9a-4091-8451-a8dc9f98e27c",
     "year": "1998"
+  },
+  {
+    "id": "8135fa0f-fe0a-41c1-957c-6fb5147ce504",
+    "title": "crepusculo",
+    "authorId": "75b52667-2908-4015-8051-af840743bf65",
+    "publisherId": "cb6ebdd0-24af-4257-8bf3-f05b5f7e44bc",
+    "year": "2005"
+  },
+  {
+    "id": "72141da6-08e0-4a37-8325-722eceba8d08",
+    "title": "dracula",
+    "authorId": "fb44a5a8-768f-4e20-a341-7cc3ca2b5cde",
+    "publisherId": "79f6a3d5-ef94-448d-bd06-fcc169b24287",
+    "year": "1890"
+  },
+  {
+    "id": "a8f1acd9-6215-4bb9-9309-ea21e611e474",
+    "title": "orgullo y prejuicio",
+    "authorId": "jane austen",
+    "publisherId": "penguin",
+    "year": "2000"
+  },
+  {
+    "id": "72845057-39cb-43e5-affa-c54f6dbb2037",
+    "title": "el alquimista",
+    "authorId": "48e74e1c-464c-4e91-8fcf-632a0922b81a",
+    "publisherId": "e3d7c937-f04b-4267-b672-d74bf5c38e68",
+    "year": "2009"
+  },
+  {
+    "id": "217dfd71-18a6-471c-9431-9b7886a9dc7d",
+    "title": "la soledad",
+    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "publisherId": "90759e84-9565-42b7-8690-66c4adb38bca",
+    "year": "planeta"
+  },
+  {
+    "id": "3577d389-96f7-4bde-965d-cc6971e47af7",
+    "title": "palabras cruzadas",
+    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "publisherId": "90759e84-9565-42b7-8690-66c4adb38bca",
+    "year": "planeta",
+    "nationality": "2016"
+  },
+  {
+    "id": "63ae59bf-10b1-4951-80a3-c1cfa32b68b3",
+    "title": "encuentros",
+    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "publisherId": "315c7c1b-5846-46c8-b90c-91c8830fece3",
+    "year": "planeta"
+  },
+  {
+    "id": "21b7aefd-6f81-43a0-bd20-beec1ae3265b",
+    "title": "el precio de la pasión",
+    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "publisherId": "b8784b3d-8f85-4f32-83a6-a9cb337abda8",
+    "year": "2009",
+    "nationality": "argentino"
+  },
+  {
+    "id": "3034975b-1c00-465b-95c7-a147b285d47f",
+    "title": "el caballero muerte",
+    "authorId": "4fffa09a-34b4-4c77-9b35-8d26c88d1442",
+    "publisherId": "03f327f0-c897-4f62-be28-9f3d33532f5e",
+    "year": "2019"
   }
 ]

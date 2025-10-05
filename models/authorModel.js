@@ -19,16 +19,18 @@ const AuthorModel = {
         const authorData = fs.readFileSync(authorsPath, 'utf-8');
         const authorJson = JSON.parse(authorData);
         
-        let author = authorJson.find(a => a.name === name);
+        let author = authorJson.find(a => a.name.toLowerCase().trim() === name.toLowerCase().trim());
         
         if(!author){
             author = {id: uuidv4(),             //Creamos un objeto
             name,
-            nationality
+            nationality:nationality || 'desconocida'
         }
-    };
-        authorJson.push(author)
+        
+        authorJson.push(author)             //Agregamos el autor solo sino existía
         fs.writeFileSync(authorsPath, JSON.stringify(authorJson, null, 2), 'utf-8');
+    };
+        
         return author;  //Devuelve el objeto agregado.
     },
     
