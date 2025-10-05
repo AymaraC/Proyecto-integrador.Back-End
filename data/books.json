@@ -1,95 +1,37 @@
 [
   {
-    "id": "acd1ef6e-bf4b-4aae-a718-cf7584770aa1",
-    "title": "muchas vidas, muchos maestros",
-    "authorId": "11b9e884-c941-401e-b0da-b04242a42dbc",
-    "publisherId": "d8038f91-cd9a-4091-8451-a8dc9f98e27c",
-    "year": "1988"
+    "id": "82e6e186-4e8a-4267-bde6-7f231357eabd",
+    "title": "la soledad",
+    "authorId": "a68c0327-9448-4ed2-8897-e73f73bc6268",
+    "publisherId": "07871131-535f-4556-b2f8-711ccf9e0f86",
+    "year": "2025"
   },
   {
-    "id": "6b56f33f-6374-46af-b749-ae2b5bac0864",
-    "title": "cien años de soledad ",
-    "authorId": "5c64c56f-2e26-4956-9e1c-de025a8fef71",
-    "publisherId": "65542201-6622-4107-bb87-3eda36be839e",
-    "year": "1967"
-  },
-  {
-    "id": "d40ba9a8-8b3e-4684-bf43-424ce8cc0094",
-    "title": "orgullo y prejuicio",
-    "authorId": "9e097c82-2956-423a-badb-1621f65c680a",
-    "publisherId": "5c4a2b75-fee7-4ecc-880b-362514f30e7e",
-    "year": "1813"
-  },
-  {
-    "id": "33bc9878-b773-43ea-a1ba-5323406b6d89",
-    "title": "harry potter y el prisionero de azkaban",
-    "authorId": "b9335d99-9d99-43b5-a044-4463f721362f",
-    "publisherId": "d8038f91-cd9a-4091-8451-a8dc9f98e27c",
-    "year": "1999"
-  },
-  {
-    "id": "a672ca79-29e6-4a37-9de7-2f85b2ff873a",
-    "title": "harry potter y la camara secreta",
-    "authorId": "b9335d99-9d99-43b5-a044-4463f721362f",
-    "publisherId": "d8038f91-cd9a-4091-8451-a8dc9f98e27c",
-    "year": "1998"
-  },
-  {
-    "id": "8135fa0f-fe0a-41c1-957c-6fb5147ce504",
-    "title": "crepusculo",
-    "authorId": "75b52667-2908-4015-8051-af840743bf65",
-    "publisherId": "cb6ebdd0-24af-4257-8bf3-f05b5f7e44bc",
-    "year": "2005"
-  },
-  {
-    "id": "72141da6-08e0-4a37-8325-722eceba8d08",
-    "title": "dracula",
-    "authorId": "fb44a5a8-768f-4e20-a341-7cc3ca2b5cde",
-    "publisherId": "79f6a3d5-ef94-448d-bd06-fcc169b24287",
-    "year": "1890"
-  },
-  {
-    "id": "a8f1acd9-6215-4bb9-9309-ea21e611e474",
-    "title": "orgullo y prejuicio",
-    "authorId": "jane austen",
-    "publisherId": "penguin",
-    "year": "2000"
-  },
-  {
-    "id": "72845057-39cb-43e5-affa-c54f6dbb2037",
-    "title": "el alquimista",
-    "authorId": "48e74e1c-464c-4e91-8fcf-632a0922b81a",
-    "publisherId": "e3d7c937-f04b-4267-b672-d74bf5c38e68",
+    "id": "955fccf8-7906-4c3c-80d5-d90e09670bdd",
+    "title": "palabras cruzadas",
+    "authorId": "a68c0327-9448-4ed2-8897-e73f73bc6268",
+    "publisherId": "07871131-535f-4556-b2f8-711ccf9e0f86",
     "year": "2009"
   },
   {
-    "id": "217dfd71-18a6-471c-9431-9b7886a9dc7d",
-    "title": "la soledad",
-    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
-    "publisherId": "90759e84-9565-42b7-8690-66c4adb38bca",
-    "year": "planeta"
+    "id": "a840d388-11cc-44a7-b9af-e528ea310e6a",
+    "title": "luna nueva",
+    "authorId": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
+    "publisherId": "ef7c49a1-503d-4f90-ae31-50225343f381",
+    "year": "2006"
   },
   {
-    "id": "3577d389-96f7-4bde-965d-cc6971e47af7",
-    "title": "palabras cruzadas",
-    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
-    "publisherId": "90759e84-9565-42b7-8690-66c4adb38bca",
-    "year": "planeta",
-    "nationality": "2016"
+    "id": "eeb9854f-e021-494a-8388-193bcc897ffc",
+    "title": "eclipse",
+    "authorId": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
+    "publisherId": "ef7c49a1-503d-4f90-ae31-50225343f381",
+    "year": "2007"
   },
   {
-    "id": "63ae59bf-10b1-4951-80a3-c1cfa32b68b3",
-    "title": "encuentros",
-    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
-    "publisherId": "315c7c1b-5846-46c8-b90c-91c8830fece3",
-    "year": "planeta"
-  },
-  {
-    "id": "21b7aefd-6f81-43a0-bd20-beec1ae3265b",
-    "title": "el precio de la pasión",
-    "authorId": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
-    "publisherId": "b8784b3d-8f85-4f32-83a6-a9cb337abda8",
-    "year": "2009",
-    "nationality": "argentino"
+    "id": "e63bab5e-31fc-41ce-8dd3-e9cbe1eae9cd",
+    "title": "eclipse",
+    "authorId": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
+    "publisherId": "ef7c49a1-503d-4f90-ae31-50225343f381",
+    "year": "2007"
   }
 ]

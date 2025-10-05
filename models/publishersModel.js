@@ -9,6 +9,13 @@ const __dirname = dirname(__filename)
 const publisherPath = path.join(__dirname, '../data/publishers.json');
 const bookPath = path.join(__dirname, '../data/books.json');
 
+const normalizeText = (data) =>             //Función para normalizar el texto: espacios, tildes, mayusculas.
+  data
+    ?.normalize('NFD')                      //Separa letras y acentos
+    .replace(/[\u0300-\u036f]/g, '')        //Elimina los acentos
+    .toLowerCase()                          //Convierte todo a minusculas
+    .trim();                                //Elimina espacios al principio y al final
+
 const PublisherModel = {
 
     getPublishers : () => {
@@ -19,15 +26,20 @@ const PublisherModel = {
     addPublisher : (name) => {
         const readFile = fs.readFileSync(publisherPath, 'utf-8');
         const fileJson = JSON.parse(readFile);
-        
-        let exists = fileJson.find(p => p.name.toLowerCase() === name.toLowerCase());
+
+        const normalizedName = normalizeText(name);
+
+        let exists = fileJson.find(p => normalizeText(p.name) === normalizedName);
+
         if(exists){
             return null;      //Como ya existe devuelve null
         }
+
         const newPublisher = {
             id: uuidv4(),
-            name
+            name: name.trim()        
         }
+        
         fileJson.push(newPublisher);
         fs.writeFileSync(publisherPath, JSON.stringify(fileJson, null, 2), 'utf-8');
         return newPublisher;
@@ -39,14 +51,13 @@ const PublisherModel = {
         const fileJson = JSON.parse(readFile);
         const book = JSON.parse(booksData);
 
-        const foundPublisher = fileJson.find(p => p.name.toLowerCase().trim() === name.toLowerCase().trim());       //Buscamos la editorial por nombre.
+        const normalizedName = normalizeText(name);
+        const foundPublisher = fileJson.find(p => normalizeText(p.name) === normalizedName);      
+        
         if(!foundPublisher){
             return null;
-        };
-        console.log('Publisher ID buscado:', foundPublisher.id);
-        console.log('PublisherID de libros:', book.map(b => b.publisherId));
+        }
 
-        
         const books = book.filter(b => b.publisherId === foundPublisher.id)
         
         return {...foundPublisher, books: books};
@@ -54,17 +65,3 @@ const PublisherModel = {
 };
 
 export default PublisherModel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -30,7 +30,7 @@ const AuthorController = {
             return LibraryView.formatResponse('❌ No se encontró ningún autor con esas caracteristicas.')
         }
 
-        const authorsForClient = author.map((a, index) => {
+        const authorsForClient = author.map(a => {
         const booksList = a.books.length > 0
         ? a.books.map((b, j) => `${j + 1}. ${b.title} (${b.year || b.publisherId || 'Año desconocido'})`).join('\n')
             : '🚫 No hay libros registrados para este autor.';
@@ -44,14 +44,3 @@ const AuthorController = {
 }
 
 export default AuthorController;
-
-
-
-
-
-
-
-
-
-
-

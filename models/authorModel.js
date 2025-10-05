@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const authorsPath = path.join(__dirname, '../data/authors.json');
 const booksPath = path.join(__dirname, '../data/books.json');
 
-const normalizeText = (data) =>          //Función para normalizar las entradas del cliente.
+const normalizeText = (data) =>          //Función para normalizar el texto: espacios, tildes, mayusculas.
   data          
     ?.normalize('NFD')                  //Separa letras y acentos
     .replace(/[\u0300-\u036f]/g, '')    //Elimina los acentos
@@ -25,20 +25,27 @@ const AuthorModel = {
     addAuthor : (name, nationality) => {
         const authorData = fs.readFileSync(authorsPath, 'utf-8');
         const authorJson = JSON.parse(authorData);
+
+        const normalizedName = normalizeText(name);               //Normalizamos las entradas
+        const normalizedNationality = normalizeText(nationality);
+
+        let author = authorJson.find(a =>                       // Buscamos si ya existe un autor con mismo nombre y nacionalidad
+        normalizeText(a.name) === normalizedName &&
+        normalizeText(a.nationality || 'desconocida') === normalizedNationality
+    );
         
-        let author = authorJson.find(a => a.name.toLowerCase().trim() === name.toLowerCase().trim());
-        
-        if(!author){
-            author = {id: uuidv4(),             //Creamos un objeto
-            name,
+        if(!author) {
+            author = {                                      //Creamos el autor sino existía
+            id: uuidv4(),                            
+            name : name.trim(),
             nationality:nationality || 'desconocida'
-        }
+        };
         
         authorJson.push(author)             //Agregamos el autor solo sino existía
         fs.writeFileSync(authorsPath, JSON.stringify(authorJson, null, 2), 'utf-8');
-    };
+    }
         
-        return author;  //Devuelve el objeto agregado.
+        return author;  //Devuelve el autor agregado o el que ya existe.
     },
     
     findAuthor : (name, nationality) => {
@@ -50,11 +57,13 @@ const AuthorModel = {
         let results = authorJson;       //Le asignamos el array con el los autores que se encuentran en nuestra biblioteca actualemente
 
         if(name){                       //Filtra por nombre 
-            results= results.filter(a => a.name.toLowerCase().trim() === name.toLowerCase().trim());
+            const normalizedName = normalizeText(name);
+            results = results.filter(a => normalizeText(a.name) === normalizedName);
         };
 
         if(nationality){                //Filtra por nacionalidad
-        results = results.filter(a => a.nationality && a.nationality.toLowerCase().trim() === nationality.toLowerCase().trim());
+            const normalizedNationality = normalizeText(nationality);
+            results = results.filter(a => a.nationality && normalizeText(a.nationality) === normalizedNationality);
         };
 
         results = results.map(a => {
@@ -69,17 +78,3 @@ const AuthorModel = {
 };
 
 export default AuthorModel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

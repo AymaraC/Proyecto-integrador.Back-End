@@ -28,9 +28,9 @@ const BookController = {
     addBook: (title, authorName, publisherName, year, nationality) => {
         const newBook = BookModel.addBook(title, authorName, publisherName, year, nationality);        
         if(!newBook){
-            return LibraryView.formatResponse(`El libro ${title} ya se encuentra en nuestra biblioteca`);
+            return LibraryView.formatResponse(`El libro '${title}' ya se encuentra en nuestra biblioteca`);
         } else {
-            return LibraryView.formatResponse(`📖 Libro ${newBook.title} agregado con éxito.`)
+            return LibraryView.formatResponse(`📖 Libro '${newBook.title}' agregado con éxito.`)
         }
     },
 
@@ -49,7 +49,10 @@ const BookController = {
 
     deleteBook : (title) => {
         const deleted = BookModel.deleteBook(title);
-        return LibraryView.formatResponse(`✅ Libro '${deleted.title}' eliminado con éxito.`);
+        if(!deleted){
+            return LibraryView.formatResponse(`🚫 El libro '${title}' no se encontró.`);
+        }
+            return LibraryView.formatResponse(`✅ Libro '${deleted.title}' eliminado con éxito.`);
     }
 
 };

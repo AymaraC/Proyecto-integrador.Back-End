@@ -17,9 +17,9 @@ server.on('connection', (socket) => {                       //Le asignamos un id
     socket.write('¡Bienvenido a nuestra biblioteca! 📚\n')
 
     socket.on('data', (data) => {
-        const command = data.toString().trim().toLowerCase().normalize('NFC')    //Utilizamos el .toString() para convertir el buffer a string, el normalize para evitar errores por tildes, utilizamos el .trim()
+        const command = data.toString().trim().toLowerCase().normalize('NFC')    //Utilizamos el .toString() para convertir el buffer a string, el normalize('NFC') para evitar errores por tildes, utilizamos el .trim()
                                                                                 //para eliminar espacios innecesarios y el .toLowerCase() para evitar errores dependiendo de como escriba el cliente.
-
+        console.log(`Cliente ${clientId}, envió: '${command}'`);
         if(command === 'get books'){                                            //Si el cliente envía 'get books' le pedimos al controlador que devuelva todos los libros.
         const response = BookController.getBooks();
         socket.write(response + '\n', 'utf-8');                                 //Utilizamos el 'utf-8' para que pueda soportar las tildes y los caracteres extraños como la 'ñ'
@@ -64,7 +64,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "LIBROS".----------------//
 
-        else if(command === 'get publishers'){
+        else if(command === 'get publishers'){      //Maneja comandos para obtener todas las editoriales, agregar una nueva o buscar una existente.
             const response = PublisherController.getPublishers();
             socket.write(response + '\n', 'utf-8');
 
@@ -86,7 +86,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "EDITORIALES".----------------//
 
-          else if(command === 'get authors'){
+          else if(command === 'get authors'){               //Comandos para obtener autores, agregar o buscar. Para agregar o buscar, valida formato JSON y campos obligatorios.
             const authors = AuthorController.getAuthors();
             socket.write(authors + '\n', 'utf-8');
 
@@ -124,20 +124,20 @@ server.on('connection', (socket) => {                       //Le asignamos un id
         console.error(err.message);
     });
 
-    socket.on('end', () => {
+    socket.on('end', () => {            //Evento que se dispara cuando el cliente cierra la conexión
         socket.write('👋 ¡Hasta luego!\n', 'utf-8')
         console.log(`🔌 El cliente: ${clientId} se desconectó.`);
         
     });
 
-    socket.on('close', () => {
+    socket.on('close', () => {          //Evento que se dispara cuando termina la sesión TCP, sin importar si hubo error o cierre normal.
         console.log(`Sesion con el cliente ${clientId} finalizada.`);
         
     });
 
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, () => {             //Ponemos al servidor a escuchar conexiones entrantes en el puerto 8080.
     console.log(`Servidor escuchando en el puerto... ${PORT}`);
 });
 

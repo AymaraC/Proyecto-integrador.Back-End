@@ -22,42 +22,26 @@ const PublisherController = {
         if(!newPublisher){
             return LibraryView.formatResponse(`❌ La editorial '${name}' ya se encuentra registrada.`)
         } else {
-            return LibraryView.formatResponse(`✅ Editorial ${name} agregada con éxito.`);
+            return LibraryView.formatResponse(`✅ Editorial '${name}' agregada con éxito.`);
         }
     },
 
-    findPublisher : (name, forClient = false) => {
+    findPublisher : (name) => {
         const found = PublisherModel.findPublisher(name);
 
-        if(!found){
+        if(!found){         //Sino encuentra la editorial, devuelve un mensaje de error
             const message = `🚫 La editorial ${name} no se encuentra en nuestra biblioteca.`
-            return forClient ? { error: message } : LibraryView.formatResponse(message);
+            return LibraryView.formatResponse(message);
         }
         
-        const bookList = found.books.length > 0 ? found.books.map((b, index) => 
-            `${index + 1}.  ${b.title} (${b.year})`).join('\n') 
-            : '🚫 No hay libros registrados para esta editorial.'
+        const bookList = found.books.length > 0 ? found.books.map((b, index) => //Si la editorial fue encontrada, generamos la lista de libros que pertenecen a esa editorial. 
+            `${index + 1}.  ${b.title} (${b.year})`).join('\n')             //Si hay libros lo formateamos con índice y año.
+            : '🚫 No hay libros registrados para esta editorial.'          //Sino hay libros, mostramos un mensaje indicando que no hay registros.
     
         const publisherToView = `📚 Editorial: ${found.name}\n📚 Libros:\n${bookList}`;
         
-        return forClient ? { name: found.name, books: bookList } : LibraryView.formatResponse(publisherToView);
+        return LibraryView.formatResponse(publisherToView);
     }
 };
 
 export default PublisherController;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

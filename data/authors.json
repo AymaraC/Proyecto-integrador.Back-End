@@ -1,48 +1,17 @@
 [
   {
-    "id": "11b9e884-c941-401e-b0da-b04242a42dbc",
-    "name": "braian weiss"
-  },
-  {
-    "id": "5c64c56f-2e26-4956-9e1c-de025a8fef71",
-    "name": "gabriel garcia marquez"
-  },
-  {
-    "id": "9e097c82-2956-423a-badb-1621f65c680a",
-    "name": "jane austen"
-  },
-  {
-    "id": "b9335d99-9d99-43b5-a044-4463f721362f",
-    "name": "j.k.rowling"
-  },
-  {
-    "id": "042b2710-a00f-4c09-a9ce-c6270ccdceaa",
-    "name": "maria elena walsh",
-    "nationality": "argentina"
-  },
-  {
-    "id": "d026afa0-6f97-4f20-9ae1-0cb66603fb2f",
-    "name": "pepox",
-    "nationality": "argentina"
-  },
-  {
-    "id": "48e74e1c-464c-4e91-8fcf-632a0922b81a",
-    "name": "paulo coelho",
-    "nationality": "desconocida"
-  },
-  {
-    "id": "181a23b8-79ed-4b83-9288-f3a9f6b1fa73",
+    "id": "a68c0327-9448-4ed2-8897-e73f73bc6268",
     "name": "gabriel rolon",
-    "nationality": "desconocida"
+    "nationality": "argentino"
   },
   {
-    "id": "4fffa09a-34b4-4c77-9b35-8d26c88d1442",
-    "name": "cassandra clare",
-    "nationality": "colombiana"
+    "id": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
+    "name": "sthephenie meyer",
+    "nationality": "estadounidense"
   },
   {
-    "id": "95ae7206-f3b5-491b-8ad0-894e3688d87b",
-    "name": "virginia wolff",
-    "nationality": "britanica"
+    "id": "382a19c1-5019-424d-a9c6-d1876a23d07c",
+    "name": "julio verne",
+    "nationality": "francés"
   }
 ]
