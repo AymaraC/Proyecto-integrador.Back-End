@@ -30,7 +30,7 @@ const PublisherController = {
         const found = PublisherModel.findPublisher(name);
 
         if(!found){         //Sino encuentra la editorial, devuelve un mensaje de error
-            const message = `🚫 La editorial ${name} no se encuentra en nuestra biblioteca.`
+            const message = `🚫 La editorial '${name}' no se encuentra en nuestra biblioteca.`
             return LibraryView.formatResponse(message);
         }
         

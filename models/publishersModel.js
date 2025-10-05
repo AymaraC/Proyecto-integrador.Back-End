@@ -29,13 +29,13 @@ const PublisherModel = {
 
         const normalizedName = normalizeText(name);
 
-        let exists = fileJson.find(p => normalizeText(p.name) === normalizedName);
+        let exists = fileJson.find(p => normalizeText(p.name) === normalizedName);     //Nos fijamos que no exista la editorial que quieren ingresar a nuestra biblioteca.
 
         if(exists){
             return null;      //Como ya existe devuelve null
         }
 
-        const newPublisher = {
+        const newPublisher = {              //Agregamos una nueva editorial
             id: uuidv4(),
             name: name.trim()        
         }
@@ -52,7 +52,7 @@ const PublisherModel = {
         const book = JSON.parse(booksData);
 
         const normalizedName = normalizeText(name);
-        const foundPublisher = fileJson.find(p => normalizeText(p.name) === normalizedName);      
+        const foundPublisher = fileJson.find(p => normalizeText(p.name) === normalizedName);      //Buscamos el nombre de la editorial ingresada por consola con el texto ya normalizado.  
         
         if(!foundPublisher){
             return null;

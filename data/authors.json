@@ -18,5 +18,10 @@
     "id": "b9c2e347-db39-46ab-906d-faba98b4c32e",
     "name": "jane austen",
     "nationality": "britanica"
+  },
+  {
+    "id": "b28ffc67-f7cf-4330-8b51-07cc90654145",
+    "name": "brian weiss",
+    "nationality": "estadounidense"
   }
 ]
