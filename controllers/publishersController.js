@@ -19,8 +19,10 @@ const PublisherController = {
 
     addPublisher : (name) => {
         const newPublisher = PublisherModel.addPublisher(name);
+        
         if(!newPublisher){
             return LibraryView.formatResponse(`❌ La editorial '${name}' ya se encuentra registrada.`)
+        
         } else {
             return LibraryView.formatResponse(`✅ Editorial '${name}' agregada con éxito.`);
         }

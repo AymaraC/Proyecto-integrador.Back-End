@@ -13,8 +13,8 @@ const normalizeText = (data) =>          //Función para normalizar el texto: es
   data          
     ?.normalize('NFD')                  //Separa letras y acentos
     .replace(/[\u0300-\u036f]/g, '')    //Elimina los acentos
-    .toLowerCase()
-    .trim();
+    .toLowerCase()                      //Convierte a minusculas
+    .trim();                            //Elimina los espacios del principio y del final
 
 const AuthorModel = {
     getAuthors : () => {

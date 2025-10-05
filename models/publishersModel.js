@@ -58,7 +58,7 @@ const PublisherModel = {
             return null;
         }
 
-        const books = book.filter(b => b.publisherId === foundPublisher.id)
+        const books = book.filter(b => b.publisherId === foundPublisher.id)      
         
         return {...foundPublisher, books: books};
     }

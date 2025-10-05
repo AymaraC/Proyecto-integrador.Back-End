@@ -182,3 +182,4 @@ client.on('end', () => {
     console.log('Conexión cerrada por el servidor.');
     ejecutando = false;
 });
+

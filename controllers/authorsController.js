@@ -6,7 +6,7 @@ const AuthorController = {
         const authors = AuthorModel.getAuthors();
         
         if(authors.length === 0){
-            return LibraryView.formatResponse('🪶🚫 No hay autores disponibles.')
+            return LibraryView.formatResponse('🪶🚫 No hay autores disponibles.')       //Mensaje de error por si el JSON se encuentra vacío.
         } else {
             const list = authors.map((a, index) => {
                 const name = a.name || 'Desconocido';

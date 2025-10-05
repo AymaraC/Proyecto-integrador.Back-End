@@ -98,4 +98,4 @@ const BookModel = {
     }
 };
 
-export default BookModel;
+export default BookModel;           //Exportamos el objeto para que pueda ser utilizado en otros archivos
