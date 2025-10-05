@@ -49,9 +49,17 @@ const BookModel = {
                 id: uuidv4(),
                 name: publisherName
             };
+            
             publishersJson.push(publisher);
             fs.writeFileSync(publishersPath, JSON.stringify(publishersJson, null, 2), 'utf-8');
         }
+
+            const exists = booksJson.some(b => normalizeText(b.title) === normalizeText(title)); //Verificamos que el libro no exista ya en nuestra biblioteca.
+            
+            if (exists) {
+            return  null;
+
+            }
 
         const newBook = {                   //Creamos el libro con IDs correctos
             id: uuidv4(),

@@ -26,11 +26,13 @@ const BookController = {
     },
 
     addBook: (title, authorName, publisherName, year, nationality) => {
-        const newBook = BookModel.addBook(title, authorName, publisherName, year, nationality);        
+        const newBook = BookModel.addBook(title, authorName, publisherName, year, nationality); 
+
         if(!newBook){
-            return LibraryView.formatResponse(`El libro '${title}' ya se encuentra en nuestra biblioteca`);
+            return LibraryView.formatResponse(`⚠️  No se pudo agregar el libro. El título '${title.trim()}' ya se encuentra en nuestra biblioteca`);
+
         } else {
-            return LibraryView.formatResponse(`📖 Libro '${newBook.title}' agregado con éxito.`)
+            return LibraryView.formatResponse(`📖 Libro '${newBook.title.trim()}' agregado con éxito.`)
         }
     },
 

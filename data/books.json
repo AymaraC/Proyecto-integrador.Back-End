@@ -21,17 +21,24 @@
     "year": "2006"
   },
   {
-    "id": "eeb9854f-e021-494a-8388-193bcc897ffc",
+    "id": "ee0a9473-87f9-41af-ac68-78cc24b9026c",
     "title": "eclipse",
     "authorId": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
     "publisherId": "ef7c49a1-503d-4f90-ae31-50225343f381",
     "year": "2007"
   },
   {
-    "id": "e63bab5e-31fc-41ce-8dd3-e9cbe1eae9cd",
-    "title": "eclipse",
-    "authorId": "ffe8c8c5-ff36-40cd-8b2f-ca06834fd362",
-    "publisherId": "ef7c49a1-503d-4f90-ae31-50225343f381",
-    "year": "2007"
+    "id": "36093b67-5d34-466d-ba08-213d0c2f9634",
+    "title": "la vuelta al mundo en 80 días",
+    "authorId": "382a19c1-5019-424d-a9c6-d1876a23d07c",
+    "publisherId": "64d3e0ec-bbe8-4dd0-a9cc-e43e5352af79",
+    "year": "1872"
+  },
+  {
+    "id": "7557751c-1db1-4e4d-bfff-e2bd5a6d153c",
+    "title": "orgullo y prejuicio",
+    "authorId": "b9c2e347-db39-46ab-906d-faba98b4c32e",
+    "publisherId": "7e12d549-6b30-4511-ad50-a48eb8daf246",
+    "year": "1813"
   }
 ]

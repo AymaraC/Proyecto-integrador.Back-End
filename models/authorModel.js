@@ -29,11 +29,14 @@ const AuthorModel = {
         const normalizedName = normalizeText(name);               //Normalizamos las entradas
         const normalizedNationality = normalizeText(nationality);
 
-        let author = authorJson.find(a =>                       // Buscamos si ya existe un autor con mismo nombre y nacionalidad
+        let exists = authorJson.find(a =>                       //Buscamos si ya existe un autor con mismo nombre y nacionalidad
         normalizeText(a.name) === normalizedName &&
         normalizeText(a.nationality || 'desconocida') === normalizedNationality
     );
         
+        if(exists)              //Si ya existe, devolvemos null
+            return null;
+
         if(!author) {
             author = {                                      //Creamos el autor sino existía
             id: uuidv4(),                            

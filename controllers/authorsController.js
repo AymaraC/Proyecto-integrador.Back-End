@@ -20,6 +20,11 @@ const AuthorController = {
 
     addAuthor : (name, nationality) => {
         const newAuthor = AuthorModel.addAuthor(name, nationality);
+
+        if (!newAuthor) {             //Mostramos un mensaje si el autor ya existe.
+        return LibraryView.formatResponse(`⚠️  No se puede agregar. El autor "${name.trim()}" ya existe.`);
+    }
+
         return LibraryView.formatResponse(`✅ Autor '${newAuthor.name}' agregado con éxito.`);
     }, 
 
