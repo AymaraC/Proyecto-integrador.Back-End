@@ -34,14 +34,13 @@ const PublisherController = {
             return forClient ? { error: message } : LibraryView.formatResponse(message);
         }
         
-        const bookList = found.books.length > 0 ? found.books.map(b => `${b.title} (${b.year})`) : '🚫 No hay libros registrados para esta editorial.'
+        const bookList = found.books.length > 0 ? found.books.map((b, index) => 
+            `${index + 1}.  ${b.title} (${b.year})`).join('\n') 
+            : '🚫 No hay libros registrados para esta editorial.'
     
-        const publisherToView = {
-            name: found.name,
-            books: bookList
-        }
+        const publisherToView = `📚 Editorial: ${found.name}\n📚 Libros:\n${bookList}`;
         
-        return forClient ? publisherToView : LibraryView.formatResponse(publisherToView);
+        return forClient ? { name: found.name, books: bookList } : LibraryView.formatResponse(publisherToView);
     }
 };
 

@@ -30,16 +30,18 @@ const AuthorController = {
             return LibraryView.formatResponse('❌ No se encontró ningún autor con esas caracteristicas.')
         }
 
-        const authorsForClient = author.map(a => ({            //Le devuelve al cliente un objeto JSON crudo.
-        name: a.name,
-        nationality: a.nationality,
-        books: a.books.length > 0 ? a.books.map(b => ({ title: b.title, year: b.year })) : []
-        }));
+        const authorsForClient = author.map((a, index) => {
+        const booksList = a.books.length > 0
+        ? a.books.map((b, j) => `${j + 1}. ${b.title} (${b.year})`).join('\n')
+            : '🚫 No hay libros registrados para este autor.';
 
-        return authorsForClient;
+        return `${index + 1}. ${a.name} | ${a.nationality || '-' }\n ${booksList}`;
+    });
+
+    return LibraryView.formatResponse(authorsForClient.join('\n\n'));
+
     }
-    
-};
+}
 
 export default AuthorController;
 

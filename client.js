@@ -141,22 +141,19 @@ client.on('data', (data) => {
     const responseStr = data.toString().trim();
     let response = responseStr;
 
-    // Si es JSON, lo parseamos
-    if (responseStr.startsWith('{') || responseStr.startsWith('[')) {
+    if (responseStr.startsWith('{') || responseStr.startsWith('[')) {        // Si es JSON, lo parseamos
         response = JSON.parse(responseStr);
     }
 
-    // Si tiene books, es un publisher
     if (response.books) {
         console.log('\nEditorial:', response.name);
         if (Array.isArray(response.books)) {
             console.log('Libros:');
             response.books.forEach(b => console.log('-', b));
         } else {
-            console.log(response.books); // mensaje "no hay libros"
+            console.log(response.books); 
         }
-    } else {
-        // cualquier otra respuesta (string o objeto)
+    } else {                                                    // cualquier otra respuesta (string o objeto)
         console.log('\n', response);
     }
 

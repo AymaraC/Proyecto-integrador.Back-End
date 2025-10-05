@@ -79,7 +79,9 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             }
         } else if(command.startsWith('find publisher ')){
             const publisher = command.replace('find publisher ', '').trim();
-//REVISAR QUE LA CAGUE Y FALTA EL SOCKETWRITE
+            const response = PublisherController.findPublisher(publisher);
+            socket.write(response + '\n', 'utf-8');
+
         }
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "EDITORIALES".----------------//
@@ -106,11 +108,11 @@ server.on('connection', (socket) => {                       //Le asignamos un id
             }
 
         } else if(command.startsWith('find author ')) {
-                const response = command.replace('find author ', '').trim();
-                console.log('El cliente busca el author: ', response);
+                const jsonString = command.slice('find author '.length).trim();
+                const {name, nationality} = JSON.parse(jsonString)
                 
-                const { name, nationality } = JSON.parse(response); 
-                socket.write(AuthorController.findAuthor(name, nationality) + '\n', 'utf-8');
+                const response = AuthorController.findAuthor(name, nationality); 
+                socket.write(JSON.stringify(response) + '\n', 'utf-8');
         } 
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "AUTORES".----------------//
