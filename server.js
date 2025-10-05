@@ -112,7 +112,7 @@ server.on('connection', (socket) => {                       //Le asignamos un id
                 const {name, nationality} = JSON.parse(jsonString)
                 
                 const response = AuthorController.findAuthor(name, nationality); 
-                socket.write(JSON.stringify(response) + '\n', 'utf-8');
+                socket.write(response + '\n', 'utf-8');
         } 
 
             //----------------HASTA ACÁ LOS COMANDOS PARA "AUTORES".----------------//

@@ -32,10 +32,10 @@ const AuthorController = {
 
         const authorsForClient = author.map((a, index) => {
         const booksList = a.books.length > 0
-        ? a.books.map((b, j) => `${j + 1}. ${b.title} (${b.year})`).join('\n')
+        ? a.books.map((b, j) => `${j + 1}. ${b.title} (${b.year || b.publisherId || 'Año desconocido'})`).join('\n')
             : '🚫 No hay libros registrados para este autor.';
 
-        return `${index + 1}. ${a.name} | ${a.nationality || '-' }\n ${booksList}`;
+        return `👤 Autor: ${a.name} | 🌍 Nacionalidad: ${a.nationality || '-'}\n📚 Libros:\n${booksList}`;
     });
 
     return LibraryView.formatResponse(authorsForClient.join('\n\n'));

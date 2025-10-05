@@ -9,6 +9,13 @@ const __dirname = dirname(__filename);
 const authorsPath = path.join(__dirname, '../data/authors.json');
 const booksPath = path.join(__dirname, '../data/books.json');
 
+const normalizeText = (data) =>          //Función para normalizar las entradas del cliente.
+  data          
+    ?.normalize('NFD')                  //Separa letras y acentos
+    .replace(/[\u0300-\u036f]/g, '')    //Elimina los acentos
+    .toLowerCase()
+    .trim();
+
 const AuthorModel = {
     getAuthors : () => {
         const authorData = fs.readFileSync(authorsPath, 'utf-8');
