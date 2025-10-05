@@ -178,6 +178,7 @@ A continuación se muestran capturas de pantalla de la interacción con el servi
 
 - Comando enviado: `delete book `
 - Respuesta esperada: `✅ Libro 'Título' eliminado con éxito.`
+
 ![Eliminar libro](images/comando-deleteBook.png)
 
 ### Listar autores
@@ -206,7 +207,7 @@ A continuación se muestran capturas de pantalla de la interacción con el servi
 
 ## 📝 Notas finales
 
-- Este proyecto es un servidor TCP básico para manejar libros, autores y editoriales.
+- Este proyecto consiste en un servidor TCP para manejar libros, autores y editoriales.
 - Todos los títulos, nombres de autores y editoriales se normalizan para evitar duplicados.
 - Los datos se almacenan en archivos JSON locales, por lo que la persistencia depende de estos archivos.
 - Para agregar nuevos libros, autores o editoriales, asegurarse de no duplicar entradas existentes.
