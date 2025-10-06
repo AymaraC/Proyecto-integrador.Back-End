@@ -37,7 +37,7 @@ El servidor se encarga de:
 ## Instalación
 
 1. Clonar el repositorio:  
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/AymaraC/Proyecto-integrador.Back-End
 
 2. Instalar dependencias:
 Solo se necesita la librería uuid. Node.js ya provee el resto de las funcionalidades.
